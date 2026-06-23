@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>Spring Rate Calculator | Gurudatta Trading Co. Mumbai</title>
+<meta name="description" content="Free online spring rate calculator by Gurudatta Trading Co. Compute spring rate, solid height, max load, stress and full spec report instantly.">
+<meta name="author" content="Gurudatta Trading Co.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Spring Rate Calculator | Gurudatta Trading Co.">
+<meta property="og:description" content="Free online spring rate calculator by Gurudatta Trading Co. Compute spring rate, solid height, max load, stress and full spec report instantly.">
+<meta property="og:image" content="https://2.wlimg.com/company_logo/13516914.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════
+   GLOBAL RESET & VARIABLES
+═══════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* From website */
+  --primary:#ff6b00;
+  --primary-dark:#e55a00;
+  --navy:#0a0f2c;
+  --navy2:#0d1535;
+  --navy3:#111a3e;
+  --card-bg:#0f1940;
+  --card-border:rgba(255,255,255,0.07);
+  --text:#ffffff;
+  --text-muted:rgba(255,255,255,0.6);
+  --text-light:rgba(255,255,255,0.35);
+  --border:rgba(255,255,255,0.1);
+  --input-bg:rgba(255,255,255,0.06);
+  --input-border:rgba(255,255,255,0.15);
+  --input-focus:#ff6b00;
+  --radius:12px;
+  --radius-sm:8px;
+  --ok:#22c55e;--ok-bg:rgba(34,197,94,0.12);--ok-border:rgba(34,197,94,0.3);
+  --warn:#f59e0b;--warn-bg:rgba(245,158,11,0.12);--warn-border:rgba(245,158,11,0.3);
+  --err:#ef4444;--err-bg:rgba(239,68,68,0.12);--err-border:rgba(239,68,68,0.3);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;line-height:1.6}
+
+/* ═══════════════════════════════════
+   NAVBAR — exact match website
+═══════════════════════════════════ */
+.wa-strip{background:var(--primary);text-align:center;padding:6px 16px;font-size:12px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px}
+.wa-strip a{color:#fff;text-decoration:none}
+
+nav{background:var(--navy2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,0.4)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:38px;height:38px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.nav-logo-text{color:#fff;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;line-height:1.2}
+.nav-logo-sub{font-size:10px;color:var(--text-muted);font-weight:400;display:block}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;padding:7px 14px;border-radius:6px;transition:.15s;white-space:nowrap}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.07)}
+.nav-links a.active{color:var(--primary);background:rgba(255,107,0,0.1)}
+.nav-links a span{margin-right:4px}
+.nav-wa{background:var(--primary);color:#fff!important;border-radius:20px!important;padding:7px 16px!important;font-weight:600!important}
+.nav-wa:hover{background:var(--primary-dark)!important}
+.hamburger{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px}
+.mob-menu{display:none;background:var(--navy2);border-top:1px solid var(--border);padding:12px 20px;flex-direction:column;gap:4px}
+.mob-menu a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:6px;display:block}
+.mob-menu a.active{color:var(--primary)}
+.mob-menu.open{display:flex}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:block}}
+
+/* ═══════════════════════════════════
+   HERO BANNER
+═══════════════════════════════════ */
+.calc-hero{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy3) 100%);border-bottom:1px solid var(--border);padding:40px 20px 32px;text-align:center;position:relative;overflow:hidden}
+.calc-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,0,0.08) 0%,transparent 70%)}
+.calc-hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;background:radial-gradient(circle,rgba(99,102,241,0.06) 0%,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,107,0,0.15);border:1px solid rgba(255,107,0,0.3);color:var(--primary);font-size:11px;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.05em}
+.calc-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(22px,4vw,36px);font-weight:800;color:#fff;margin-bottom:8px;position:relative}
+.calc-hero h1 span{color:var(--primary)}
+.calc-hero p{color:var(--text-muted);font-size:14px;max-width:500px;margin:0 auto 16px;position:relative}
+.hero-features{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;position:relative}
+.hf{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:5px}
+.hf::before{content:'✓';color:var(--ok);font-weight:700}
+
+/* ═══════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════ */
+.calc-body{max-width:1280px;margin:0 auto;padding:24px 20px 60px;display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.calc-body{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════
+   LEFT PANEL
+═══════════════════════════════════ */
+.left-panel{display:flex;flex-direction:column;gap:14px}
+
+.panel-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden}
+.panel-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.panel-head-icon{width:26px;height:26px;background:rgba(255,107,0,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.panel-head-title{font-size:13px;font-weight:600;color:#fff}
+.panel-head-sub{font-size:11px;color:var(--text-muted)}
+.panel-body{padding:16px}
+
+/* Spring Type */
+.type-tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.ttab{border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--input-bg);padding:10px 6px;text-align:center;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-muted);transition:.15s;user-select:none;font-family:'Inter',sans-serif}
+.ttab:hover{border-color:var(--primary);color:#fff}
+.ttab.active{background:rgba(255,107,0,0.15);color:var(--primary);border-color:var(--primary)}
+.ttab-icon{font-size:22px;display:block;margin-bottom:4px}
+
+/* Unit toggle */
+.toggle-row{display:flex;align-items:center;gap:10px}
+.toggle-label{font-size:12px;color:var(--text-muted);font-weight:500}
+.toggle-pills{display:flex;background:var(--input-bg);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.tpill{padding:5px 18px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text-muted);border-right:1px solid var(--border);transition:.13s}
+.tpill:last-child{border-right:none}
+.tpill.active{background:var(--primary);color:#fff}
+
+/* Form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+.fg input,.fg select,select.full{background:var(--input-bg);border:1.5px solid var(--input-border);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;outline:none;width:100%;transition:.15s;-webkit-appearance:none}
+.fg input::placeholder{color:var(--text-light)}
+.fg input:focus,.fg select:focus,select.full:focus{border-color:var(--primary);background:rgba(255,107,0,0.05)}
+select.full{width:100%;margin-top:4px}
+select.full option{background:#1a1f3c;color:#fff}
+
+/* Calc button */
+.calc-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;letter-spacing:.03em;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.calc-btn:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,107,0,0.35)}
+.calc-btn:active{transform:translateY(0)}
+
+/* Status */
+.status{border-radius:var(--radius-sm);padding:11px 14px;font-size:12.5px;font-weight:500;display:none;line-height:1.5}
+.status.show{display:block}
+.s-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-border)}
+.s-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.s-err{background:var(--err-bg);color:var(--err);border:1px solid var(--err-border)}
+
+/* KPI Grid */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;text-align:center}
+.kpi-l{font-size:10px;color:var(--text-muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.kpi-v{font-size:18px;font-weight:700;color:var(--primary);font-family:'Montserrat',sans-serif}
+.kpi-u{font-size:10px;color:var(--text-light)}
+
+/* Spec table */
+.spec-table{width:100%;border-collapse:collapse;font-size:12px}
+.spec-table td{padding:7px 12px;border-bottom:1px solid var(--border);color:var(--text-muted)}
+.spec-table td:last-child{text-align:right;font-weight:600;color:#fff;font-family:'Montserrat',sans-serif;font-size:11.5px}
+.spec-table tr:last-child td{border-bottom:none}
+.spec-table tr:hover td{background:rgba(255,255,255,0.03)}
+
+/* Force tester */
+.force-row{display:flex;align-items:center;gap:8px}
+.force-row label{font-size:12px;color:var(--text-muted);white-space:nowrap;font-weight:500}
+.force-row input{flex:1;background:var(--input-bg);border:1.5px solid var(--input-border);border-radius:var(--radius-sm);padding:9px 11px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;outline:none}
+.force-row input:focus{border-color:var(--primary)}
+.force-result{background:var(--primary);color:#fff;border-radius:var(--radius-sm);padding:9px 14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;min-width:90px;text-align:center;line-height:1.3}
+.force-note{font-size:11px;color:var(--text-light);margin-top:5px}
+
+/* WA Button */
+.wa-btn{display:flex;width:100%;padding:13px;background:#25D366;color:#fff;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:.15s;font-family:'Montserrat',sans-serif}
+.wa-btn:hover{background:#1ebe5a;transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,0.3)}
+
+.hidden{display:none!important}
+.sec-gap{margin-top:4px}
+
+/* ═══════════════════════════════════
+   RIGHT PANEL — 3D VIEWER
+═══════════════════════════════════ */
+.right-panel{position:sticky;top:88px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;height:calc(100vh - 120px);min-height:500px;max-height:800px;display:flex;flex-direction:column}
+@media(max-width:900px){.right-panel{position:static;height:480px;order:-1}}
+.viewer-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.viewer-head-left{display:flex;align-items:center;gap:10px}
+.viewer-title{font-size:13px;font-weight:700;color:#fff;font-family:'Montserrat',sans-serif}
+.viewer-sub{font-size:11px;color:var(--text-muted)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 6px rgba(34,197,94,0.6);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.badge-3d{background:rgba(255,107,0,0.15);color:var(--primary);font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid rgba(255,107,0,0.3);letter-spacing:.05em}
+.viewer-body{flex:1;position:relative;overflow:hidden}
+#three-canvas{display:block;width:100%;height:100%}
+.placeholder-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;transition:opacity .4s}
+.placeholder-wrap.gone{opacity:0}
+.ph-icon{font-size:56px;display:block;margin-bottom:16px;opacity:.25}
+.ph-text{color:var(--text-light);font-size:13px;line-height:1.8}
+.ph-text strong{color:var(--text-muted);display:block;font-size:15px;margin-bottom:4px}
+.viewer-footer{padding:8px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:rgba(0,0,0,.2)}
+.viewer-hint{font-size:11px;color:var(--text-light);display:flex;align-items:center;gap:6px}
+.viewer-labels{display:flex;gap:12px;flex-wrap:wrap}
+.vlabel{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);font-family:monospace}
+.vdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:28px 20px;text-align:center}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-logo{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.footer-logo span{color:var(--primary)}
+.footer-sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:12px;transition:.13s}
+.footer-links a:hover{color:var(--primary)}
+.footer-copy{font-size:11px;color:var(--text-light)}
+</style>
+</head>
+<body>
+
+<!-- WA Strip -->
+<div class="wa-strip">
+  📱 Get an instant quote on WhatsApp &nbsp;·&nbsp;
+  <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry.">+91 8454995315</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://swaratravels4453.github.io/gurudattatradingcompany/index.html">
+      <div class="nav-logo-icon">⚙️</div>
+      <div class="nav-logo-text">GURUDATTA TRADING CO.
+        <span class="nav-logo-sub">No.1 Compression · Mumbai, India</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/index.html"><span>🏠</span>Home</a>
+      <a href="calculator.html" class="active"><span>⚙️</span>Calculator</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/products.html"><span>🔩</span>Products</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/reviews.html"><span>⭐</span>Reviews</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/contact.html"><span>📞</span>Contact</a>
+      <a href="https://wa.me/918454995315" class="nav-wa" target="_blank">📱 WhatsApp</a>
+    </div>
+    <button class="hamburger" onclick="toggleMob()">☰</button>
+  </div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="https://swaratravels4453.github.io/gurudattatradingcompany/index.html">🏠 Home</a>
+    <a href="calculator.html" class="active">⚙️ Calculator</a>
+    <a href="https://swaratravels4453.github.io/gurudattatradingcompany/products.html">🔩 Products</a>
+    <a href="https://swaratravels4453.github.io/gurudattatradingcompany/reviews.html">⭐ Reviews</a>
+    <a href="https://swaratravels4453.github.io/gurudattatradingcompany/contact.html">📞 Contact</a>
+    <a href="https://wa.me/918454995315" target="_blank">📱 WhatsApp Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="calc-hero">
+  <div class="hero-badge">⚙ Smart Tool</div>
+  <h1>Spring Rate <span>Calculator</span> + 3D</h1>
+  <p>India's first integrated spring calculator with live 3D viewer — get an instant full spec report.</p>
+  <div class="hero-features">
+    <span class="hf">Compression, Extension & Torsion</span>
+    <span class="hf">Metric (mm) & English (inch)</span>
+    <span class="hf">IS 4454 Standard</span>
+    <span class="hf">Live 3D Preview</span>
+  </div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="calc-body">
+
+  <!-- ══ LEFT: CALCULATOR ══ -->
+  <div class="left-panel">
+
+    <!-- Spring Type -->
+    <div class="panel-card">
+      <div class="panel-head">
+        <div class="panel-head-icon">🔩</div>
+        <div><div class="panel-head-title">Select Spring Type</div></div>
+      </div>
+      <div class="panel-body">
+        <div class="type-tabs">
+          <div class="ttab active" onclick="setType('compression')"><span class="ttab-icon">⬇</span>COMPRESSION</div>
+          <div class="ttab" onclick="setType('extension')"><span class="ttab-icon">↕</span>EXTENSION</div>
+          <div class="ttab" onclick="setType('torsion')"><span class="ttab-icon">↻</span>TORSION</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit & Dimensions -->
+    <div class="panel-card">
+      <div class="panel-head">
+        <div class="panel-head-icon">📐</div>
+        <div>
+          <div class="panel-head-title">Enter Your Dimensions</div>
+          <div class="panel-head-sub">All values in selected unit</div>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <div class="toggle-row" style="margin-bottom:14px">
+          <span class="toggle-label">Unit:</span>
+          <div class="toggle-pills">
+            <div class="tpill" id="ut-inch" onclick="setUnit('inch')">ENGLISH (IN)</div>
+            <div class="tpill active" id="ut-mm" onclick="setUnit('mm')">METRIC (MM)</div>
+          </div>
+        </div>
+
+        <!-- Compression / Extension -->
+        <div id="comp-form">
+          <div class="form-grid">
+            <div class="fg">
+              <label>Wire Dia (d) <span class="usuf">mm</span></label>
+              <input type="number" id="wd" placeholder="e.g. 1.5" step="0.01" min="0.01">
+            </div>
+            <div class="fg">
+              <label>Mean Coil Dia (D) <span class="usuf">mm</span></label>
+              <input type="number" id="mcd" placeholder="e.g. 15" step="0.1" min="0.1">
+            </div>
+            <div class="fg">
+              <label>Free Length (L₀) <span class="usuf">mm</span></label>
+              <input type="number" id="fl" placeholder="e.g. 50" step="0.5" min="0">
+            </div>
+            <div class="fg">
+              <label>Total Coils (n)</label>
+              <input type="number" id="tc" placeholder="e.g. 10" step="0.5" min="2">
+            </div>
+          </div>
+          <div class="fg sec-gap">
+            <label>Material Type</label>
+            <select class="full" id="mat">
+              <option value="80000">Mild Steel IS 4454 — G=80,000 N/mm²</option>
+              <option value="81500">Music Wire ASTM A228 — G=81,500 N/mm²</option>
+              <option value="79300">Hard Drawn Wire ASTM A227 — G=79,300 N/mm²</option>
+              <option value="80700">Chrome Vanadium ASTM A232 — G=80,700 N/mm²</option>
+              <option value="73000">Stainless Steel 304 ASTM A313 — G=73,000 N/mm²</option>
+              <option value="78000">Stainless Steel 316 — G=78,000 N/mm²</option>
+              <option value="44000">Phosphor Bronze ASTM B197 — G=44,000 N/mm²</option>
+              <option value="42000">Brass — G=42,000 N/mm²</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Torsion -->
+        <div id="tor-form" class="hidden">
+          <div class="form-grid">
+            <div class="fg">
+              <label>Wire Dia (d) <span class="usuf">mm</span></label>
+              <input type="number" id="t-wd" placeholder="e.g. 2.0" step="0.01" min="0.01">
+            </div>
+            <div class="fg">
+              <label>Mean Coil Dia (D) <span class="usuf">mm</span></label>
+              <input type="number" id="t-mcd" placeholder="e.g. 20" step="0.1" min="0.1">
+            </div>
+            <div class="fg">
+              <label>Total Coils (n)</label>
+              <input type="number" id="t-tc" placeholder="e.g. 8" step="0.5" min="2">
+            </div>
+            <div class="fg">
+              <label>Torque (N·mm) optional</label>
+              <input type="number" id="t-torque" placeholder="e.g. 500" step="1" min="0">
+            </div>
+          </div>
+          <div class="fg sec-gap">
+            <label>Material — Young's Modulus (E)</label>
+            <select class="full" id="t-mat">
+              <option value="200000">Mild Steel — E=200,000 N/mm²</option>
+              <option value="207000">Music Wire / Chrome-V — E=207,000 N/mm²</option>
+              <option value="193000">Stainless Steel 304 — E=193,000 N/mm²</option>
+              <option value="117000">Phosphor Bronze — E=117,000 N/mm²</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">⚡ Calculate &amp; View 3D</button>
+    <div class="status" id="status-box"></div>
+
+    <!-- Results -->
+    <div id="results-area" class="hidden">
+
+      <div class="panel-card">
+        <div class="panel-head">
+          <div class="panel-head-icon">📊</div>
+          <div><div class="panel-head-title">Key Results</div></div>
+        </div>
+        <div class="panel-body">
+          <div class="kpi-grid" id="kpi-grid"></div>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-head">
+          <div class="panel-head-icon">📋</div>
+          <div><div class="panel-head-title">Full Specification Sheet</div></div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="spec-table"><tbody id="spec-body"></tbody></table>
+        </div>
+      </div>
+
+      <div class="panel-card" id="force-card">
+        <div class="panel-head">
+          <div class="panel-head-icon">⚡</div>
+          <div><div class="panel-head-title">Force Tester</div><div class="panel-head-sub">F = k × x</div></div>
+        </div>
+        <div class="panel-body">
+          <div class="force-row">
+            <label>Deflection</label>
+            <input type="number" id="fc-t" placeholder="mm" step="0.5" min="0" oninput="calcForce()">
+            <div class="force-result" id="fc-r">—</div>
+          </div>
+          <div class="force-note">Force = Spring Rate × Deflection</div>
+          <div id="fc-warn" class="hidden status s-warn" style="margin-top:8px;display:none"></div>
+        </div>
+      </div>
+
+      <a class="wa-btn" id="wa-btn" href="#" target="_blank">
+        📱 WhatsApp वर Quote मागवा — Gurudatta Trading Co.
+      </a>
+
+    </div><!-- /results-area -->
+
+  </div><!-- /left-panel -->
+
+  <!-- ══ RIGHT: 3D VIEWER ══ -->
+  <div class="right-panel">
+    <div class="viewer-head">
+      <div class="viewer-head-left">
+        <div class="live-dot"></div>
+        <div>
+          <div class="viewer-title">3D Spring Viewer</div>
+          <div class="viewer-sub">Interactive · Real-time</div>
+        </div>
+      </div>
+      <span class="badge-3d">3D LIVE</span>
+    </div>
+    <div class="viewer-body">
+      <canvas id="three-canvas"></canvas>
+      <div class="placeholder-wrap" id="ph-wrap">
+        <span class="ph-icon">🔩</span>
+        <div class="ph-text">
+          <strong>3D Spring Preview</strong>
+          Dimensions भरा आणि<br>
+          <span style="color:var(--primary);font-weight:600">Calculate & View 3D</span> दाबा
+        </div>
+      </div>
+    </div>
+    <div class="viewer-footer">
+      <div class="viewer-hint">🖱 Drag to rotate · Scroll to zoom</div>
+      <div class="viewer-labels" id="viewer-labels"></div>
+    </div>
+  </div>
+
+</div><!-- /calc-body -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">GURUDATTA <span>TRADING CO.</span></div>
+    <div class="footer-sub">No.1 Compression · Mumbai, India</div>
+    <div class="footer-links">
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/products.html">Products</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/reviews.html">Reviews</a>
+      <a href="https://swaratravels4453.github.io/gurudattatradingcompany/contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Gurudatta Trading Co. All rights reserved. Mild Steel Springs Manufacturer & Supplier, Mumbai, India.</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ══════════════════════════════════
+   STATE
+══════════════════════════════════ */
+var sType='compression', unit='mm', lastR=null;
+var scene,camera,renderer,springGroup;
+var isDrag=false,prevM={x:0,y:0},rotX=0.25,rotY=0.5,zoom=5;
+var threeOK=false;
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+function toggleMob(){
+  var m=document.getElementById('mob-menu');
+  m.classList.toggle('open');
+}
+
+/* ══════════════════════════════════
+   THREE.JS INIT
+══════════════════════════════════ */
+function initThree(){
+  var vb=document.querySelector('.viewer-body');
+  var W=vb.offsetWidth||600, H=vb.offsetHeight||480;
+
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(40,W/H,0.01,300);
+  camera.position.set(0,0,zoom);
+
+  renderer=new THREE.WebGLRenderer({canvas:document.getElementById('three-canvas'),antialias:true,alpha:false});
+  renderer.setSize(W,H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setClearColor(0x0a0f2c,1);
+  renderer.shadowMap.enabled=true;
+
+  /* Lights */
+  scene.add(new THREE.AmbientLight(0xffffff,0.3));
+  var d1=new THREE.DirectionalLight(0xffffff,1.0); d1.position.set(5,10,7); scene.add(d1);
+  var d2=new THREE.DirectionalLight(0x4466ff,0.4); d2.position.set(-5,-3,-5); scene.add(d2);
+  var p1=new THREE.PointLight(0xff6b00,0.8,25); p1.position.set(4,4,4); scene.add(p1);
+  var p2=new THREE.PointLight(0x4488ff,0.4,18); p2.position.set(-4,-2,-3); scene.add(p2);
+
+  /* Floor grid */
+  var grid=new THREE.GridHelper(12,24,0x1a2a4a,0x0d1a30);
+  grid.position.y=-3.2;
+  scene.add(grid);
+
+  threeOK=true;
+  setupControls(vb);
+  window.addEventListener('resize',onResize);
+  renderLoop();
+}
+
+function onResize(){
+  if(!threeOK) return;
+  var vb=document.querySelector('.viewer-body');
+  var W=vb.offsetWidth, H=vb.offsetHeight||480;
+  camera.aspect=W/H; camera.updateProjectionMatrix();
+  renderer.setSize(W,H);
+}
+
+function renderLoop(){
+  requestAnimationFrame(renderLoop);
+  if(!threeOK) return;
+  if(!isDrag && springGroup) rotY+=0.005;
+  if(springGroup){springGroup.rotation.x=rotX;springGroup.rotation.y=rotY;}
+  camera.position.z=zoom;
+  renderer.render(scene,camera);
+}
+
+/* ══════════════════════════════════
+   BUILD 3D SPRING
+══════════════════════════════════ */
+function build3D(d,D,Ln,n,matG){
+  if(!threeOK) return;
+  if(springGroup){scene.remove(springGroup);disposeG(springGroup);springGroup=null;}
+
+  var targetH=2.8;
+  var sc=targetH/Math.max(Ln,D*2.5);
+  var sR=(D/2)*sc, sH=Ln*sc, sW=Math.max(0.02,Math.min(0.1,(d/2)*sc));
+
+  springGroup=new THREE.Group();
+
+  /* Wire color by material */
+  var col=matG===73000||matG===78000?0xb0c8e0: matG===44000?0xd4813a: matG===42000?0xd4b02a:0x7a9ab5;
+  var mat=new THREE.MeshPhongMaterial({
+    color:col, specular:0xffffff, shininess:200,
+    emissive:new THREE.Color(col).multiplyScalar(0.08)
+  });
+
+  /* Helix path */
+  var totalSeg=Math.round(n*100);
+  var pts=[];
+  for(var i=0;i<=totalSeg;i++){
+    var t=i/totalSeg;
+    var ang=t*n*Math.PI*2;
+    pts.push(new THREE.Vector3(sR*Math.cos(ang), t*sH-sH/2, sR*Math.sin(ang)));
+  }
+  var curve=new THREE.CatmullRomCurve3(pts,false,'catmullrom',0.0);
+  var geo=new THREE.TubeGeometry(curve,totalSeg,sW,16,false);
+  springGroup.add(new THREE.Mesh(geo,mat));
+
+  /* Flat end coils */
+  addEndCoil(springGroup,sR,sW, sH/2,  1,mat);
+  addEndCoil(springGroup,sR,sW,-sH/2, -1,mat);
+
+  /* End plates */
+  var pMat=new THREE.MeshPhongMaterial({color:0x1a2a4a,specular:0x4466aa,shininess:100,emissive:0x0a1020,emissiveIntensity:0.5});
+  var pGeo=new THREE.CylinderGeometry(sR*0.8,sR*0.8,0.04,48);
+  var tp=new THREE.Mesh(pGeo,pMat); tp.position.y=sH/2+sW+0.02; springGroup.add(tp);
+  var bp=new THREE.Mesh(pGeo,pMat); bp.position.y=-sH/2-sW-0.02; springGroup.add(bp);
+
+  /* Orange accent ring on plates */
+  var ringMat=new THREE.MeshPhongMaterial({color:0xff6b00,emissive:0xff4400,emissiveIntensity:0.3});
+  var rGeo=new THREE.TorusGeometry(sR*0.65,0.012,8,40);
+  var tr2=new THREE.Mesh(rGeo,ringMat); tr2.position.y=sH/2+sW+0.04; tr2.rotation.x=Math.PI/2; springGroup.add(tr2);
+  var br2=new THREE.Mesh(rGeo,ringMat); br2.position.y=-sH/2-sW-0.04; br2.rotation.x=Math.PI/2; springGroup.add(br2);
+
+  scene.add(springGroup);
+
+  /* Adjust camera */
+  zoom=Math.max(3,Math.max(sH,sR*2)*2.6);
+  rotX=0.25; rotY=0.4;
+
+  /* Footer labels */
+  document.getElementById('viewer-labels').innerHTML=
+    '<div class="vlabel"><div class="vdot" style="background:'+hexCol(col)+'"></div>'+matLabel(matG)+'</div>'+
+    '<div class="vlabel"><div class="vdot" style="background:#4499ff"></div>d='+fmtU(d)+uSuf()+'</div>'+
+    '<div class="vlabel"><div class="vdot" style="background:#ff6b00"></div>D='+fmtU(D)+uSuf()+'</div>'+
+    '<div class="vlabel"><div class="vdot" style="background:#22c55e"></div>n='+n+'</div>';
+
+  /* Hide placeholder */
+  document.getElementById('ph-wrap').classList.add('gone');
+}
+
+function addEndCoil(grp,R,tr,yBase,dir,mat){
+  var pts=[],segs=48;
+  for(var i=0;i<=segs;i++){
+    var t=i/segs, ang=t*Math.PI*2*0.92;
+    pts.push(new THREE.Vector3(R*Math.cos(ang),yBase+t*dir*tr*0.4,R*Math.sin(ang)));
+  }
+  var g=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),segs,tr,12,false);
+  grp.add(new THREE.Mesh(g,mat));
+}
+
+function disposeG(g){
+  g.traverse(function(c){if(c.isMesh){c.geometry.dispose();c.material.dispose();}});
+}
+
+function hexCol(c){'#'+c.toString(16).padStart(6,'0');}
+function hexCol(c){return '#'+('000000'+c.toString(16)).slice(-6);}
+function matLabel(g){
+  if(g===73000||g===78000) return 'Stainless Steel';
+  if(g===44000) return 'Ph. Bronze';
+  if(g===42000) return 'Brass';
+  if(g===81500) return 'Music Wire';
+  if(g===79300) return 'Hard Drawn';
+  if(g===80700) return 'Chrome-V';
+  return 'Mild Steel';
+}
+
+/* ══════════════════════════════════
+   MOUSE / TOUCH
+══════════════════════════════════ */
+function setupControls(el){
+  el.addEventListener('mousedown',function(e){isDrag=true;prevM={x:e.clientX,y:e.clientY};e.preventDefault();});
+  document.addEventListener('mouseup',function(){isDrag=false;});
+  document.addEventListener('mousemove',function(e){
+    if(!isDrag)return;
+    rotY+=(e.clientX-prevM.x)*0.008;
+    rotX+=(e.clientY-prevM.y)*0.008;
+    prevM={x:e.clientX,y:e.clientY};
+  });
+  el.addEventListener('wheel',function(e){
+    e.preventDefault();
+    zoom=Math.max(1.5,Math.min(20,zoom+e.deltaY*0.009));
+  },{passive:false});
+  var ts=null;
+  el.addEventListener('touchstart',function(e){if(e.touches.length===1){isDrag=true;ts={x:e.touches[0].clientX,y:e.touches[0].clientY};}},{passive:true});
+  el.addEventListener('touchend',function(){isDrag=false;});
+  el.addEventListener('touchmove',function(e){
+    if(!isDrag||!ts||e.touches.length!==1)return;
+    rotY+=(e.touches[0].clientX-ts.x)*0.008;
+    rotX+=(e.touches[0].clientY-ts.y)*0.008;
+    ts={x:e.touches[0].clientX,y:e.touches[0].clientY};
+  },{passive:true});
+}
+
+/* ══════════════════════════════════
+   UNIT / TYPE
+══════════════════════════════════ */
+function setType(t){
+  sType=t;
+  document.querySelectorAll('.ttab').forEach(function(el,i){
+    el.classList.toggle('active',['compression','extension','torsion'][i]===t);
+  });
+  document.getElementById('comp-form').classList.toggle('hidden',t==='torsion');
+  document.getElementById('tor-form').classList.toggle('hidden',t!=='torsion');
+  document.getElementById('results-area').classList.add('hidden');
+  document.getElementById('status-box').className='status';
+}
+
+function setUnit(u){
+  unit=u;
+  ['mm','inch'].forEach(function(x){document.getElementById('ut-'+x).classList.toggle('active',x===u);});
+  var lbl=u==='mm'?'mm':'in';
+  document.querySelectorAll('.usuf').forEach(function(el){el.textContent=lbl;});
+}
+
+function toMM(v){if(unit==='inch')return v*25.4;return v;}
+function fromMM(v){if(unit==='inch')return v/25.4;return v;}
+function fmt(v,d){return parseFloat(v.toFixed(d===undefined?3:d));}
+function fmtU(v){return fmt(fromMM(v),2);}
+function uSuf(){return unit==='mm'?'mm':'in';}
+
+/* ══════════════════════════════════
+   CALCULATE
+══════════════════════════════════ */
+function calculate(){
+  if(sType==='torsion'){calcTorsion();return;}
+  var wd=parseFloat(document.getElementById('wd').value);
+  var mc=parseFloat(document.getElementById('mcd').value);
+  var fl=parseFloat(document.getElementById('fl').value)||0;
+  var tc=parseFloat(document.getElementById('tc').value);
+  var G=parseFloat(document.getElementById('mat').value);
+
+  if(!wd||!mc||!tc){showSt('warn','⚠ Wire Diameter, Coil Diameter आणि Total Coils आवश्यक आहेत.');return;}
+
+  var d=toMM(wd),D=toMM(mc),n=tc;
+  var Ln=fl?toMM(fl):D*3;
+  var C=D/d;
+  var K=(4*C-1)/(4*C-4)+0.615/C;
+  var k=(Math.pow(d,4)*G)/(8*Math.pow(D,3)*n);
+  var solidL=n*d, pitch=n>1?(Ln-d)/(n-1):Ln, OD=D+d, ID=D-d;
+  var maxS=G===73000?830:(G===78000?860:(G===44000?350:(G===42000?310:900)));
+  var safeF=(maxS*Math.PI*Math.pow(d,3))/(K*8*D);
+  var dMax=safeF/k;
+  var stress=K*(8*safeF*D)/(Math.PI*Math.pow(d,3));
+  lastR={d:d,D:D,Ln:Ln,n:n,k:k,solidL:solidL,OD:OD,ID:ID,safeF:safeF,dMax:dMax,stress:stress};
+
+  var w=[],ok=true;
+  if(C<4){w.push('Spring Index C='+fmt(C,1)+' < 4 — Manufacturing कठीण');ok=false;}
+  if(C>12)w.push('Spring Index C='+fmt(C,1)+' > 12 — Buckling शक्य');
+  if(solidL>=Ln){w.push('Solid Length > Free Length!');ok=false;}
+  if(!w.length)showSt('ok','✓ Design चांगला आहे। कोणत्याही warnings नाहीत।');
+  else if(ok)showSt('warn','⚠ '+w.join(' | '));
+  else showSt('err','✗ '+w.join(' | '));
+
+  buildKPI([
+    ['Spring Rate (k)',fmt(k,3),'N/mm'],
+    ['Safe Load',fmt(safeF,1),'N ('+fmt(safeF/9.81,1)+' kg)'],
+    ['Max Deflection',fmtU(dMax),uSuf()],
+    ['Outer Dia (OD)',fmtU(OD),uSuf()],
+    ['Inner Dia (ID)',fmtU(ID),uSuf()],
+    ['Solid Length',fmtU(solidL),uSuf()]
+  ]);
+  buildSpec([
+    ['Wire Diameter (d)',fmtU(d)+' '+uSuf()],
+    ['Mean Coil Dia (D)',fmtU(D)+' '+uSuf()],
+    ['Outer Diameter (OD)',fmtU(OD)+' '+uSuf()],
+    ['Inner Diameter (ID)',fmtU(ID)+' '+uSuf()],
+    ['Free Length (L₀)',fmtU(Ln)+' '+uSuf()],
+    ['Solid Length (Ls)',fmtU(solidL)+' '+uSuf()],
+    ['Total Coils (n)',n],
+    ['Active Coils (na)',n-2],
+    ['Pitch (p)',fmtU(pitch)+' '+uSuf()],
+    ['Spring Index (C)',fmt(C,3)],
+    ['Wahl Factor (K)',fmt(K,4)],
+    ['Shear Modulus (G)',G.toLocaleString()+' N/mm²'],
+    ['Spring Rate (k)',fmt(k,4)+' N/mm'],
+    ['Max Safe Load',fmt(safeF,2)+' N = '+fmt(safeF/9.81,2)+' kg'],
+    ['Max Deflection',fmtU(dMax)+' '+uSuf()],
+    ['Max Torsional Stress',fmt(stress,1)+' N/mm²']
+  ]);
+
+  document.getElementById('force-card').classList.remove('hidden');
+  document.getElementById('fc-t').value='';
+  document.getElementById('fc-r').textContent='—';
+  document.getElementById('fc-warn').style.display='none';
+  buildWA();
+  document.getElementById('results-area').classList.remove('hidden');
+  build3D(d,D,Ln,n,G);
+}
+
+function calcTorsion(){
+  var d=toMM(parseFloat(document.getElementById('t-wd').value));
+  var D=toMM(parseFloat(document.getElementById('t-mcd').value));
+  var n=parseFloat(document.getElementById('t-tc').value);
+  var T=parseFloat(document.getElementById('t-torque').value)||0;
+  var E=parseFloat(document.getElementById('t-mat').value);
+  if(!d||!D||!n){showSt('warn','⚠ कृपया सर्व dimensions भरा।');return;}
+  var C=D/d,Ki=(4*C-1)/(4*C-4);
+  var kT=(E*Math.pow(d,4))/(10.8*D*n);
+  var theta=T?(T*10.8*D*n)/(E*Math.pow(d,4))*180/Math.PI:0;
+  lastR={d:d,D:D,n:n,isTorsion:true};
+  showSt('ok','✓ Torsion Spring calculated!');
+  buildKPI([
+    ['Spring Index (C)',fmt(C,2),''],
+    ['Angular Rate',fmt(kT,3),'N·mm/°'],
+    ['OD',fmtU(D+d),uSuf()],
+    ['ID',fmtU(D-d),uSuf()],
+    ['Wahl Ki',fmt(Ki,4),''],
+    ['Rotation θ',T?fmt(theta,2)+' °':'—','']
+  ]);
+  buildSpec([
+    ['Wire Diameter (d)',fmtU(d)+' '+uSuf()],
+    ['Mean Coil Dia (D)',fmtU(D)+' '+uSuf()],
+    ['OD',fmtU(D+d)+' '+uSuf()],['ID',fmtU(D-d)+' '+uSuf()],
+    ['Total Coils',n],["Young's Modulus E",E.toLocaleString()+' N/mm²'],
+    ['Spring Index C',fmt(C,3)],['Wahl Ki',fmt(Ki,4)],
+    ['Angular Stiffness',fmt(kT,4)+' N·mm/°'],
+    ['Applied Torque',T?T+' N·mm':'—'],
+    ['Angular Deflection',T?fmt(theta,2)+' °':'—']
+  ]);
+  document.getElementById('force-card').classList.add('hidden');
+  buildWA();
+  document.getElementById('results-area').classList.remove('hidden');
+  build3D(d,D,60,n,200000);
+}
+
+function calcForce(){
+  if(!lastR||lastR.isTorsion)return;
+  var t=parseFloat(document.getElementById('fc-t').value);
+  var el=document.getElementById('fc-r'),we=document.getElementById('fc-warn');
+  if(!t||t<=0){el.textContent='—';we.style.display='none';return;}
+  var tMM=toMM(t),f=lastR.k*tMM;
+  el.innerHTML=fmt(f,1)+' N<br><span style="font-size:11px;opacity:.8">'+fmt(f/9.81,2)+' kg</span>';
+  if(tMM>lastR.dMax){we.textContent='⚠ Safe limit ओलांडते! Spring damage होऊ शकतो.';we.style.display='block';}
+  else if(tMM>lastR.dMax*.8){we.textContent='⚠ 80% limit पेक्षा जास्त — काळजी घ्या.';we.style.display='block';}
+  else we.style.display='none';
+}
+
+function showSt(t,m){var el=document.getElementById('status-box');el.className='status show s-'+t;el.textContent=m;}
+
+function buildKPI(a){
+  document.getElementById('kpi-grid').innerHTML=a.map(function(r){
+    return '<div class="kpi"><div class="kpi-l">'+r[0]+'</div><div class="kpi-v">'+r[1]+'</div><div class="kpi-u">'+r[2]+'</div></div>';
+  }).join('');
+}
+function buildSpec(rows){
+  document.getElementById('spec-body').innerHTML=rows.map(function(r){
+    return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';
+  }).join('');
+}
+function buildWA(){
+  var r=lastR,msg='Namaskar Gurudatta Trading Co.,\n\nMala spring quote havi ahe:\n';
+  if(r){
+    msg+='Spring Type: '+sType+'\n';
+    if(!r.isTorsion)msg+='d='+fmt(r.d,2)+'mm | D='+fmt(r.D,2)+'mm | L₀='+fmt(r.Ln,2)+'mm | n='+r.n+'\nRate: '+fmt(r.k,3)+' N/mm | Safe Load: '+fmt(r.safeF,1)+' N ('+fmt(r.safeF/9.81,1)+' kg)\n';
+    else msg+='d='+fmt(r.d,2)+'mm | D='+fmt(r.D,2)+'mm | n='+r.n+'\n';
+    msg+='\nKrupaya quote dya. Dhanyavad!';
+  }
+  document.getElementById('wa-btn').href='https://wa.me/918454995315?text='+encodeURIComponent(msg);
+}
+
+window.addEventListener('load',function(){setTimeout(initThree,150);});
+window.addEventListener('resize',function(){setTimeout(onResize,60);});
+</script>
+</body>
+</html>
