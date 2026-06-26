@@ -46,7 +46,8 @@ body{font-family:'Inter',sans-serif;background:#0a0f2c;color:#fff;min-height:100
 nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4)}
 .nav-in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
-.nav-icon{width:34px;height:34px;background:var(--P);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.nav-icon{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(107,99,255,0.5)}
+.nav-icon img{width:100%;height:100%;object-fit:cover;display:block}
 .nav-txt{color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-sub{font-size:10px;color:var(--tm);font-weight:400;display:block}
 .nav-links{display:flex;align-items:center;gap:2px}
@@ -246,7 +247,7 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
 <nav>
   <div class="nav-in">
     <a class="nav-logo" href="index.html">
-      <div class="nav-icon">⚙️</div>
+      <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
       <div class="nav-txt">GURUDATTA TRADING CO.<span class="nav-sub">No.1 Compression · Mumbai, India</span></div>
     </a>
     <div class="nav-links">
