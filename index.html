@@ -687,7 +687,7 @@ function calculate(){
 /* ══ GOOGLE SHEETS ══ */
 function sendToSheets(name,mob,d,D,OD,Ln,n,k,safeF,end,wind,G){
   try{
-    var url='https://script.google.com/macros/s/AKfycbxfv2DGXaJhI7DV-pjYLEWs0QIrNB13EjElOcJV-5dlIc1O88CJjkjVHalLN8Rrmsc/exec';
+    var url='https://script.google.com/macros/s/AKfycbyHiblHcr6RYJvZiKah-GHMKd3b1aCA8xYH0f1QUtZdtBIwg0btkNTyVgQTclhsqi-K/exec';
     var data={name:name,mobile:mob,type:sType,unit:unit,wireDia:d,meanDia:D,outerDia:OD,freeLen:Ln,coils:n,rate:fmt(k,3),load:fmt(safeF,1),endType:end,wind:wind,material:G,timestamp:new Date().toISOString()};
     fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});
   }catch(e){}
