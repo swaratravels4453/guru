@@ -22,7 +22,8 @@
 <meta property="og:site_name" content="Gurudatta Trading Co.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -169,14 +170,14 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 .map-section iframe{display:block;width:100%;height:340px;border:none;filter:grayscale(.4) brightness(.85)}
 
 /* ═══ FOOTER ═══ */
-footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px;text-align:center}
+footer{background:#111118; border-top:1px solid var(--border);padding:24px 20px;text-align:center}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-logo{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:3px}
-.ft-logo span{color:var(--P)}
-.ft-sub{font-size:12px;color:var(--tm);margin-bottom:14px}
+.ft-logo span{color:var(--accent);}
+.ft-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
 .ft-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
-.ft-links a{color:var(--tm);text-decoration:none;font-size:12px;transition:.13s}
-.ft-links a:hover{color:var(--P)}
+.ft-links a{color:var(--muted);text-decoration:none;font-size:12px;transition:.13s}
+.ft-links a:hover{color:var(--accent);}
 .ft-copy{font-size:11px;color:var(--tl);line-height:1.6}
 @media(max-width:480px){footer{padding:18px 14px}.ft-links{gap:10px}}
 
@@ -186,8 +187,6 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
 
 @media(max-width:860px){.nav-list{display:none}.ham{display:flex}}
 </style>
-  <div class="topbar">📱 Get an instant quote on WhatsApp · <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry." target="_blank" rel="noopener">+91 8454995315</a></div>
-
 <header id="hdr">
   <nav class="inner">
     <a href="index.html" class="logo-wrap">
@@ -198,14 +197,15 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
       <li><a href="index.html">🏠 Home</a></li>
       <li><a href="calculator.html">⚙️ Calculator</a></li>
       <li><a href="products.html">🔩 Products</a></li>
-      <li><a href="reviews.html" class="act">⭐ Reviews</a></li>
-      <li><a href="contact.html" class="ncta">📞 Contact</a></li>
+      <li><a href="reviews.html">⭐ Reviews</a></li>
+      <li><a href="contact.html" class="ncta act">📞 Contact</a></li>
     </ul>
     <button class="ham" id="ham" onclick="toggleDraw()" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 </header>
 </head>
-<body>
+<body> 
+  <div class="topbar">📱 Get an instant quote on WhatsApp · <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry." target="_blank" rel="noopener">+91 8454995315</a></div>
 <!-- Mobile overlay + drawer -->
 <div class="mdr-overlay" id="mobBg" onclick="closeDraw()"></div>
 <div class="mdr" id="mobDraw">
@@ -213,7 +213,7 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
     <a href="index.html">🏠 Home</a>
     <a href="calculator.html">⚙️ Calculator</a>
     <a href="products.html">🔩 Products</a>
-    <a href="reviews.html">⭐ Reviews</a>
+    <a href="reviews.html">⭐ Reviews</a> 
   </nav>
   <a class="mcta-m" href="contact.html">📞 Contact Us</a>
 </div>
