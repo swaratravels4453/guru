@@ -186,27 +186,42 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(.9rem,4vw,2.5rem);b
 </head>
 <body>
 
-<!-- Top bar -->
-<div class="topbar">📱 Get an instant quote on WhatsApp · <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry." target="_blank" rel="noopener">+91 8454995315</a></div>
+<!-- TOP BAR -->
+<div class="top-bar">
+  📱 Get an instant quote on WhatsApp · <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry.">+91 8454995315</a>
+</div>
 
-<!-- Header -->
-<header id="hdr">
-  <nav class="inner">
-    <a href="index.html" class="logo-wrap">
-      <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
-      <span class="logo">GURUDATTA TRADING CO.<small>No.1 Compression · Mumbai, India</small></span>
+<!-- HEADER / NAV -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="GCT Logo">
+      <div class="logo-text">
+        <span class="brand">GURUDATTA TRADING CO.</span>
+        <span class="tagline">No.1 Compression · Mumbai, India</span>
+      </div>
     </a>
-    <ul class="nav-list">
-      <li><a href="index.html">🏠 Home</a></li>
-      <li><a href="calculator.html">⚙️ Calculator</a></li>
-      <li><a href="products.html">🔩 Products</a></li>
-      <li><a href="reviews.html">⭐ Reviews</a></li>
-      <li><a href="contact.html" class="act ncta">📞 Contact</a></li>
-    </ul>
-    <button class="ham" id="ham" onclick="toggleDraw()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="desktop-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="calculator.html">⚙️ Calculator</a>  <!-- index.html मध्ये हे नाव वेगळे असेल -->
+      <a href="products.html">🔩 Products</a>
+      <a href="reviews.html">⭐ Reviews</a>
+      <a href="contact.html">📞 Contact</a>
+      <a href="https://wa.me/918454995315" class="btn-whatsapp">📱 WhatsApp</a>
+    </nav>
+    <button class="hamburger" id="menuBtn">☰</button>
+  </div>
+  <!-- Mobile menu -->
+  <nav class="mobile-nav" id="mobileMenu">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">⚙️ Calculator</a>
+    <a href="products.html">🔩 Products</a>
+    <a href="reviews.html">⭐ Reviews</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="https://wa.me/918454995315">📱 WhatsApp Quote</a>
   </nav>
-</header>
-
+</header> 
+  
 <!-- Mobile overlay + drawer -->
 <div class="mdr-overlay" id="mobBg" onclick="closeDraw()"></div>
 <div class="mdr" id="mobDraw">
