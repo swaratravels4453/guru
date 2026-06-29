@@ -76,41 +76,7 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
     height:100%;
     object-fit:cover;
     display:block;
-} 
-    /* ── VARIABLES ── */
-:root{
-  --P:#ff6b00;--Pd:#e55a00;
-  --navy:#0a0f2c;--navy2:#0d1535;--navy3:#111a3e;
-  --bdr:rgba(255,255,255,0.1);--bdr2:rgba(255,255,255,0.16);
-  --tm:rgba(255,255,255,0.6);
 }
-
-/* ── WA STRIP ── */
-.wa-strip{background:var(--P);padding:7px 16px;font-size:12px;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;text-align:center}
-.wa-strip a{color:#fff;text-decoration:none}
-
-/* ── NAV ── */
-nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4)}
-.nav-in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
-.nav-icon{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(107,99,255,0.5)}
-.nav-icon img{width:100%;height:100%;object-fit:cover;display:block}
-.nav-txt{color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav-sub{font-size:10px;color:var(--tm);font-weight:400;display:block}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-links a{color:var(--tm);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:.14s;white-space:nowrap}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
-.nav-links a.act{color:var(--P);background:rgba(255,107,0,.1)}
-.nav-wa{background:var(--P)!important;color:#fff!important;border-radius:20px!important;padding:6px 14px!important;font-weight:600!important}
-.nav-wa:hover{background:var(--Pd)!important}
-.burger{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;padding:4px}
-.mob-nav{display:none;background:var(--navy2);border-top:1px solid var(--bdr);padding:10px 16px;flex-direction:column;gap:2px}
-.mob-nav a{color:var(--tm);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:6px;display:block;transition:.13s}
-.mob-nav a.act{color:var(--P)}
-.mob-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.mob-nav.open{display:flex}
-@media(max-width:768px){.nav-links{display:none!important}.burger{display:block}}
-@media(max-width:420px){.nav-sub{display:none}.nav-txt{font-size:12px}}
 
 /* ═══ MEGA DROPDOWN ═══ */
 .mega{display:none;position:fixed;top:var(--nav-h);left:0;right:0;z-index:800;background:#11111c;border-bottom:2px solid var(--accent);box-shadow:0 20px 60px rgba(0,0,0,.7);max-height:calc(100vh - var(--nav-h));overflow-y:auto}
@@ -264,42 +230,24 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(.9rem,4vw,2.5rem);b
 
 <!-- HEADER -->
 <header id="hdr">
-  <!-- WA Strip -->
-<div class="wa-strip">
-  📱 Get an instant quote on WhatsApp &nbsp;·&nbsp;
-  <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry.">+91 8454995315</a>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a class="nav-logo" href="index.html">
+  <nav class="inner">
+    <a href="index.html" class="logo-wrap">
       <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
-      <div class="nav-txt">GURUDATTA TRADING CO.<span class="nav-sub">No.1 Compression · Mumbai, India</span></div>
+      <span class="logo">GURUDATTA TRADING CO.<small>No.1 Compression · Mumbai, India</small></span>
     </a>
-    <div class="nav-links">
-      <a href="index.html">🏠 Home</a>
-      <a href="calculator.html">⚙️ Calculator</a>
-      <a href="products.html">🔩 Products</a>
-      <a href="reviews.html">⭐ Reviews</a>
-      <a href="contact.html">📞 Contact</a>
-      <a href="https://wa.me/918454995315" class="nav-wa" target="_blank">📱 WhatsApp</a>
-    </div>
-    <button class="burger" onclick="toggleNav()" aria-label="Menu">☰</button>
-  </div>
-  <div class="mob-nav" id="mob-nav">
-    <a href="index.html">🏠 Home</a>
-    <a href="calculator.html">⚙️ Calculator</a>
-    <a href="products.html">🔩 Products</a>
-    <a href="reviews.html">⭐ Reviews</a>
-    <a href="contact.html">📞 Contact</a>
-    <a href="https://wa.me/918454995315" target="_blank" style="color:#25D366;font-weight:700">📱 WhatsApp Quote</a>
-  </div>
-</nav>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <ul class="nav-list" id="navList">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="calculator.html">⚙️ Calculator</a></li>
+      <li id="prodLi">
+        <button class="nb" id="prodBtn" onclick="toggleMega()" aria-haspopup="true" aria-expanded="false">
+          🔩 Products <span class="chev">▼</span>
+        </button>
+      </li>
+      <li><a href="reviews.html">⭐ Reviews</a></li>
+      <li><a href="contact.html" class="ncta">📞 Contact</a></li>
+    </ul>
+    <button class="ham" id="ham" onclick="toggleDraw()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
 </header>
 
 <!-- MEGA DROPDOWN -->
