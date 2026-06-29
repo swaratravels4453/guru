@@ -212,15 +212,16 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 .related h3::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* ═══ FOOTER ═══ */
-footer{border-top:1px solid var(--border);padding:2rem clamp(.9rem,4vw,2.5rem);background:var(--surface);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
-.fb{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;color:var(--accent)}
-.fb small{display:block;font-size:.62rem;color:var(--muted);font-weight:400}
-.fl{display:flex;gap:1.2rem;flex-wrap:wrap}
-.fl a{color:var(--muted);text-decoration:none;font-size:.78rem;transition:color .14s}
-.fl a:hover{color:var(--accent)}
-.fc{color:var(--faint);font-size:.7rem;width:100%;text-align:center;margin-top:.5rem}
-
-@media(max-width:860px){.nav-list{display:none}.ham{display:flex}}
+footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px;text-align:center}
+.ft-inner{max-width:1200px;margin:0 auto}
+.ft-logo{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:3px}
+.ft-logo span{color:var(--P)}
+.ft-sub{font-size:12px;color:var(--tm);margin-bottom:14px}
+.ft-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.ft-links a{color:var(--tm);text-decoration:none;font-size:12px;transition:.13s}
+.ft-links a:hover{color:var(--P)}
+.ft-copy{font-size:11px;color:var(--tl);line-height:1.6}
+@media(max-width:480px){footer{padding:18px 14px}.ft-links{gap:10px}}
 </style>
 </head>
 <body>
