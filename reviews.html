@@ -59,7 +59,24 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 .ml a:hover{color:var(--text);background:rgba(255,255,255,.04)}
 .ml a.act{color:var(--accent)}
 .mcta-m{display:block;margin:1.1rem 1.2rem 2rem;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;padding:.82rem;border-radius:7px;transition:background .15s}
-.mcta-m:hover{background:#e56910}
+.mcta-m:hover{background:#e56910} 
+  .nav-icon{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 
 /* ═══ PAGE ═══ */
 .page-wrap{margin-top:var(--nav-h)}
@@ -136,7 +153,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(.9rem,4vw,2.5rem);b
 <header id="hdr">
   <nav class="inner">
     <a href="index.html" class="logo-wrap">
-      <img src="https://2.wlimg.com/company_logo/13516914.jpg" alt="GCT Logo" onerror="this.style.display='none'"/>
+      <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
       <span class="logo">GURUDATTA TRADING CO.<small>No.1 Compression · Mumbai, India</small></span>
     </a>
     <ul class="nav-list">
