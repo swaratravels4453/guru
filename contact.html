@@ -22,8 +22,7 @@
 <meta property="og:site_name" content="Gurudatta Trading Co.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -33,52 +32,39 @@
   --text:#e8e8f0;--muted:#7a7a90;--faint:#3a3a52;
   --nav-h:68px;--green:#22c55e;--red:#ef4444;
 }
+:root{
+  --P:#ff6b00;--Pd:#e55a00;
+  --navy:#0a0f2c;--navy2:#0d1535;--navy3:#111a3e;
+  --bdr:rgba(255,255,255,0.1);--bdr2:rgba(255,255,255,0.16);
+  --tm:rgba(255,255,255,0.6);
+}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:0}
 
-/* ═══ TOP BAR ═══ */
-.topbar{background:#0d0d16;border-bottom:1px solid var(--border);padding:7px 0;text-align:center;font-size:.73rem;color:var(--muted)}
-.topbar a{color:var(--accent);text-decoration:none;font-weight:600}
-.topbar a:hover{opacity:.8}
-
-/* ═══ HEADER ═══ */
-header{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);background:rgba(10,10,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .2s}
-header.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.5)}
-nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;padding:0 clamp(.9rem,3vw,2.5rem);gap:1rem}
-.logo{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.1rem);color:var(--accent);text-decoration:none;line-height:1.2;flex-shrink:0}
-.logo small{display:block;font-size:.56rem;color:var(--muted);font-weight:400;letter-spacing:.07em}
-.logo img{width:36px;height:36px;border-radius:6px;object-fit:cover;margin-right:8px;vertical-align:middle}
-.logo-wrap{display:flex;align-items:center;gap:8px;text-decoration:none}
-
-/* desktop nav */
-.nav-list{display:flex;align-items:center;gap:.1rem;list-style:none;margin-left:auto}
-.nav-list>li>a{display:flex;align-items:center;gap:.28rem;padding:.42rem .78rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;border-radius:6px;transition:color .15s,background .15s}
-.nav-list>li>a:hover{color:var(--text);background:rgba(255,255,255,.05)}
-.nav-list>li>a.act{color:var(--accent)}
-.ncta{background:var(--accent)!important;color:#fff!important;border-radius:6px!important;font-weight:600!important;padding:.42rem .95rem!important}
-.ncta:hover{background:#e56910!important;color:#fff!important}
-
-/* hamburger */
-.ham{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:5px;width:38px;height:38px;flex-shrink:0;margin-left:auto}
-.ham span{display:block;width:21px;height:2px;background:var(--text);border-radius:2px;transition:.24s;transform-origin:center}
-.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* mobile drawer */
-.mdr{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:850;background:var(--surface);overflow-y:auto;transform:translateX(100%);transition:transform .27s cubic-bezier(.4,0,.2,1)}
-.mdr.open{display:block;transform:translateX(0)}
-.mdr-overlay{display:none;position:fixed;inset:0;z-index:849;background:rgba(0,0,0,.55)}
-.mdr-overlay.open{display:block}
-.ml{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;flex-direction:column}
-.ml a{color:var(--muted);text-decoration:none;font-size:.87rem;font-weight:500;padding:.58rem .45rem;border-radius:5px;display:flex;align-items:center;gap:.55rem;transition:color .13s,background .13s}
-.ml a:hover,.ml a.act{color:var(--text);background:rgba(255,255,255,.04)}
-.ml a.act{color:var(--accent)}
-.mcta-m{display:block;margin:1.1rem 1.2rem 2rem;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;padding:.82rem;border-radius:7px;transition:background .15s}
-.mcta-m:hover{background:#e56910}
+/* ═══ NAV ═══ */
+nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4)}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.nav-icon{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(107,99,255,0.5)}
+.nav-icon img{width:100%;height:100%;object-fit:cover;display:block}
+.nav-txt{color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-sub{font-size:10px;color:var(--tm);font-weight:400;display:block}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{color:var(--tm);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:.14s;white-space:nowrap}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-links a.act{color:var(--P);background:rgba(255,107,0,.1)}
+.nav-wa{background:var(--P)!important;color:#fff!important;border-radius:20px!important;padding:6px 14px!important;font-weight:600!important}
+.nav-wa:hover{background:var(--Pd)!important}
+.burger{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;padding:4px}
+.mob-nav{display:none;background:var(--navy2);border-top:1px solid var(--bdr);padding:10px 16px;flex-direction:column;gap:2px}
+.mob-nav a{color:var(--tm);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:6px;display:block;transition:.13s}
+.mob-nav a.act{color:var(--P)}
+.mob-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mob-nav.open{display:flex}
+@media(max-width:768px){.nav-links{display:none!important}.burger{display:block}}
+@media(max-width:420px){.nav-sub{display:none}.nav-txt{font-size:12px}}
 
 /* ═══ PAGE ═══ */
-.page-wrap{margin-top:var(--nav-h)}
 
 /* Hero strip */
 .page-hero{position:relative;padding:52px 0 40px;background:linear-gradient(135deg,#0d0d16,#141420 60%,#1a1008);border-bottom:1px solid var(--border);overflow:hidden}
@@ -87,24 +73,7 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 .page-hero .inner{max-width:1280px;margin:0 auto;padding:0 clamp(.9rem,4vw,2.5rem);position:relative}
 .ph-eyebrow{font-size:.65rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:.6rem}
 .ph-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.5rem}
-.ph-sub{color:var(--muted);font-size:.88rem;max-width:520px;line-height:1.6} 
-  .nav-icon{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    overflow:hidden;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.nav-icon img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
+.ph-sub{color:var(--muted);font-size:.88rem;max-width:520px;line-height:1.6}
 
 /* ═══ CONTACT SECTION ═══ */
 .contact-wrap{max-width:1280px;margin:0 auto;padding:56px clamp(.9rem,4vw,2.5rem) 80px;display:grid;grid-template-columns:1fr 1.25fr;gap:48px;align-items:start}
@@ -139,7 +108,7 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 @media(max-width:480px){.cs-num{font-size:1.2rem}.cs-lbl{font-size:.58rem}}
 
 /* Form side */
-.cform-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;position:sticky;top:calc(var(--nav-h) + 16px)}
+.cform-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;position:sticky;top:76px}
 @media(max-width:900px){.cform-card{position:relative;top:auto;padding:1.5rem}}
 @media(max-width:480px){.cform-card{padding:1.25rem;border-radius:10px}}
 .cform-title{font-family:'Rajdhani',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
@@ -182,53 +151,47 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 @media(max-width:400px){.map-section iframe{height:220px}}
 
 /* ═══ FOOTER ═══ */
-footer{background:#111118;border-top:1px solid var(--border);padding:24px 20px;text-align:center}
+footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px;text-align:center}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-logo{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:3px}
-.ft-logo span{color:var(--accent)}
-.ft-sub{font-size:12px;color:var(--muted);display:block;margin-bottom:10px}
-.ft-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
-.ft-links a{color:var(--muted);text-decoration:none;font-size:12px;transition:.13s}
-.ft-links a:hover{color:var(--accent)}
-.ft-copy{font-size:11px;color:var(--muted);line-height:1.6}
-@media(max-width:480px){footer{padding:16px 12px}.ft-logo{font-size:12px}.ft-sub{font-size:11px}.ft-links{gap:10px}.ft-copy{font-size:10px}}
+.ft-logo span{color:var(--P)}
+.ft-sub{font-size:12px;color:var(--tm);margin-bottom:14px}
+.ft-copy{font-size:11px;color:var(--tm);line-height:1.6}
+@media(max-width:480px){footer{padding:18px 14px}}
 
 /* spinner */
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
 
-@media(max-width:900px){.nav-list{display:none}.ham{display:flex}}
 </style>
-<header id="hdr">
-  <nav class="inner">
-    <a href="index.html" class="logo-wrap">
-      <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--accent)';this.parentNode.style.fontSize='18px'"></div>
-      <span class="logo">GURUDATTA TRADING CO.<small>No.1 Compression · Mumbai, India</small></span>
-    </a>
-    <ul class="nav-list">
-      <li><a href="index.html">🏠 Home</a></li>
-      <li><a href="calculator.html">⚙️ Calculator</a></li>
-      <li><a href="products.html">🔩 Products</a></li>
-      <li><a href="reviews.html">⭐ Reviews</a></li>
-      <li><a href="contact.html" class="ncta act">📞 Contact</a></li>
-    </ul>
-    <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" onclick="toggleDraw()"><span></span><span></span><span></span></button>
-  </nav>
-</header>
 </head>
-<body> 
-  <div class="topbar">📱 Get an instant quote on WhatsApp · <a href="https://wa.me/918454995315?text=Hello%20Gurudatta%20Trading%20Co.%2C%20I%20need%20spring%20enquiry." target="_blank" rel="noopener">+91 8454995315</a></div>
-<!-- Mobile overlay + drawer -->
-<div class="mdr-overlay" id="mobBg" onclick="closeDraw()"></div>
-<div class="mdr" id="mobDraw" role="navigation" aria-label="Mobile navigation">
-  <nav class="ml">
-    <a href="index.html" onclick="closeDraw()">🏠 Home</a>
-    <a href="calculator.html" onclick="closeDraw()">⚙️ Calculator</a>
-    <a href="products.html" onclick="closeDraw()">🔩 Products</a>
-    <a href="reviews.html" onclick="closeDraw()">⭐ Reviews</a> 
-  </nav>
-  <a class="mcta-m" href="contact.html" onclick="closeDraw()">📞 Contact Us</a>
-</div>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
+      <div class="nav-txt">GURUDATTA TRADING CO.<span class="nav-sub">No.1 Compression · Mumbai, India</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="calculator.html">⚙️ Calculator</a>
+      <a href="products.html">🔩 Products</a>
+      <a href="reviews.html">⭐ Reviews</a>
+      <a href="contact.html" class="act">📞 Contact</a>
+      <a href="https://wa.me/918454995315" class="nav-wa" target="_blank">📱 WhatsApp</a>
+    </div>
+    <button class="burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+  </div>
+  <div class="mob-nav" id="mob-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">⚙️ Calculator</a>
+    <a href="products.html">🔩 Products</a>
+    <a href="reviews.html">⭐ Reviews</a>
+    <a href="contact.html" class="act">📞 Contact</a>
+    <a href="https://wa.me/918454995315" target="_blank" style="color:#25D366;font-weight:700">📱 WhatsApp Quote</a>
+  </div>
+</nav>
 
 <div class="page-wrap">
 
@@ -348,46 +311,15 @@ footer{background:#111118;border-top:1px solid var(--border);padding:24px 20px;t
 <!-- Footer -->
 <footer>
   <div class="ft-inner">
-    <div class="ft-logo">GURUDATTA TRADING CO.<span class="ft-sub">No.1 Compression · Mumbai</span></div>
-    <div class="ft-links">
-      <a href="index.html">Home</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="products.html">Products</a>
-      <a href="reviews.html">Reviews</a>
-    </div>
-    <p class="ft-copy">© 2026 Gurudatta Trading Co. All rights reserved. Mild Steel Springs Manufacturer &amp; Supplier, Mumbai, India.</p>
+    <div class="ft-logo">GURUDATTA <span>TRADING CO.</span></div>
+    <div class="ft-sub">No.1 Compression · Mumbai, India</div>
+    <div class="ft-copy">© 2026 Gurudatta Trading Co. All rights reserved.<br>Mild Steel Springs Manufacturer & Supplier, Mumbai, India.</div>
   </div>
 </footer>
 
 <script>
-/* Header scroll */
-const hdr=document.getElementById('hdr');
-window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
-
-/* Mobile drawer */
-let dOpen=false;
-function toggleDraw(){
-  dOpen?closeDraw():openDraw();
-}
-function openDraw(){
-  dOpen=true;
-  document.getElementById('mobDraw').classList.add('open');
-  document.getElementById('mobBg').classList.add('open');
-  const hamBtn=document.getElementById('ham');
-  hamBtn.classList.add('open');
-  hamBtn.setAttribute('aria-expanded','true');
-  document.body.style.overflow='hidden';
-}
-function closeDraw(){
-  dOpen=false;
-  document.getElementById('mobDraw').classList.remove('open');
-  document.getElementById('mobBg').classList.remove('open');
-  const hamBtn=document.getElementById('ham');
-  hamBtn.classList.remove('open');
-  hamBtn.setAttribute('aria-expanded','false');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDraw()});
+function toggleNav(){document.getElementById('mob-nav').classList.toggle('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('mob-nav').classList.remove('open')});
 
 /* Contact form validation & submission */
 const validateEmail=(email)=>{
