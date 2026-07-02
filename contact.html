@@ -387,7 +387,7 @@ document.getElementById('cf-btn').addEventListener('click',async()=>{
   btn.innerHTML='<span class="spin"></span>Sending…';
   
   try{
-    const response=await fetch('https://script.google.com/macros/s/AKfycbzoPFtgY9I1aMWFBmis-kf3yg4LRuJr-nDW_vvzGjnAUMlanAG1xBS5lcdOaBrcRek/exec',{
+    const response=await fetch('https://script.google.com/macros/s/AKfycbxf7ebJNdFixMipVdSEqQoG7ekgPLWa166yW2k8eGZ7Q7m0alezd82LpAvHEl0GXHs/exec',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -401,7 +401,7 @@ document.getElementById('cf-btn').addEventListener('click',async()=>{
       })
     });
     
-    st.textContent='✅ Message sent! We\'ll respond within 24 hours.';
+    st.textContent='✅ Thank you for contacting us! A confirmation email has been sent, and our team will respond within 24 hours.';
     st.className='fstatus show ok';
     
     // Clear form
