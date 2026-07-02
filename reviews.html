@@ -95,26 +95,34 @@ nav.inner{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:ce
 .wa-strip a{color:#fff;text-decoration:none}
 
 /* ── NAV ── */
-nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4)}
-.nav-in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4);transition:background .3s ease,box-shadow .3s ease,border-color .3s ease}
+/* dynamic scroll state — nav gets tighter/darker once the page scrolls (matches home.html) */
+nav.is-scrolled{background:rgba(10,15,30,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 6px 28px rgba(0,0,0,.55);border-bottom-color:rgba(255,107,0,.25)}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;transition:height .3s ease}
+nav.is-scrolled .nav-in{height:52px}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
-.nav-icon{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(107,99,255,0.5)}
+.nav-icon{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(107,99,255,0.5);transition:width .3s ease,height .3s ease}
+nav.is-scrolled .nav-icon{width:36px;height:36px}
 .nav-icon img{width:100%;height:100%;object-fit:cover;display:block}
 .nav-txt{color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-sub{font-size:10px;color:var(--tm);font-weight:400;display:block}
 .nav-links{display:flex;align-items:center;gap:2px}
-.nav-links a{color:var(--tm);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:.14s;white-space:nowrap}
+.nav-links a{position:relative;color:var(--tm);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:.14s;white-space:nowrap}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
 .nav-links a.act{color:var(--P);background:rgba(255,107,0,.1)}
-.nav-wa{background:var(--P)!important;color:#fff!important;border-radius:20px!important;padding:6px 14px!important;font-weight:600!important}
-.nav-wa:hover{background:var(--Pd)!important}
-.burger{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;padding:4px}
-.mob-nav{display:none;background:var(--navy2);border-top:1px solid var(--bdr);padding:10px 16px;flex-direction:column;gap:2px}
-.mob-nav a{color:var(--tm);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:6px;display:block;transition:.13s}
+.nav-links a.act::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--P)}
+.nav-wa{background:var(--P)!important;color:#fff!important;border-radius:20px!important;padding:6px 14px!important;font-weight:600!important;transition:transform .18s ease,background .18s ease!important}
+.nav-wa:hover{background:var(--Pd)!important;transform:translateY(-1px)}
+.burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;padding:4px;transition:transform .25s ease}
+.burger.open{transform:scale(1.08)}
+/* animated slide-down mobile menu (matches home.html) */
+.mob-nav{max-height:0;overflow:hidden;background:var(--navy2);border-top:0 solid var(--bdr);padding:0 16px;display:flex;flex-direction:column;gap:2px;transition:max-height .32s ease,padding .32s ease,border-color .32s ease}
+.mob-nav a{opacity:0;color:var(--tm);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:6px;display:block;transition:.13s,opacity .3s ease}
 .mob-nav a.act{color:var(--P)}
 .mob-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.mob-nav.open{display:flex}
-@media(max-width:768px){.nav-links{display:none!important}.burger{display:block}}
+.mob-nav.open{max-height:420px;padding:10px 16px;border-top-width:1px}
+.mob-nav.open a{opacity:1}
+@media(max-width:768px){.nav-links{display:none!important}.burger{display:flex}}
 @media(max-width:420px){.nav-sub{display:none}.nav-txt{font-size:12px}}
 
 /* ═══ PAGE ═══ */
@@ -138,7 +146,7 @@ nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;t
 .bar-row{display:flex;align-items:center;gap:.7rem;font-size:.75rem}
 .bar-row span:first-child{color:var(--muted);width:20px;text-align:right}
 .bar-track{flex:1;height:6px;background:var(--dim);border-radius:3px;overflow:hidden}
-.bar-fill{height:100%;background:var(--accent);border-radius:3px}
+.bar-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 1s ease}
 .bar-row span:last-child{color:var(--muted);font-size:.68rem;width:26px}
 .stat-nums{display:flex;gap:2rem;flex-wrap:wrap}
 .sn-item{text-align:center}
@@ -151,7 +159,7 @@ nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;t
 @media(max-width:520px){.reviews-grid{grid-template-columns:1fr}}
 
 /* single review card */
-.rv-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .2s,transform .2s}
+.rv-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .2s,transform .2s}
 .rv-card:hover{border-color:rgba(59,130,246,.3);transform:translateY(-3px)}
 .rv-stars{color:var(--accent);font-size:.85rem;margin-bottom:.55rem;letter-spacing:2px}
 .rv-q{font-family:Georgia,serif;font-size:2.8rem;line-height:.4;color:var(--accent);opacity:.35;margin-bottom:.85rem}
@@ -160,6 +168,26 @@ nav{background:var(--navy2);border-bottom:1px solid var(--bdr);position:sticky;t
 .rv-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.85rem;color:#fff;flex-shrink:0}
 .rv-name{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.9rem;color:var(--text)}
 .rv-role{font-size:.72rem;color:var(--muted);margin-top:1px}
+.rv-badge-new{position:absolute;top:12px;right:12px;background:rgba(34,197,94,.14);color:#22c55e;border:1px solid rgba(34,197,94,.35);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+
+/* write-a-review form */
+.rv-form-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2.2rem;margin-bottom:3rem}
+.rv-form-title{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.rv-form-sub{color:var(--muted);font-size:.83rem;margin-bottom:1.4rem}
+.rv-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.rv-form-row{grid-template-columns:1fr}}
+.rv-form-group{margin-bottom:1rem}
+.rv-form-group label{display:block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.4rem}
+.rv-form-group input,.rv-form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:8px;padding:.7rem .85rem;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--text);outline:none;transition:border-color .15s,background .15s;resize:vertical}
+.rv-form-group input:focus,.rv-form-group textarea:focus{border-color:var(--accent);background:rgba(249,115,22,.05)}
+.rv-star-input{display:flex;gap:5px;font-size:1.7rem;line-height:1;cursor:pointer;width:max-content}
+.rv-star-input span{color:var(--dim);transition:color .12s,transform .12s}
+.rv-star-input span.on{color:var(--accent)}
+.rv-star-input span:hover{transform:scale(1.12)}
+.rv-form-msg{margin-top:.9rem;font-size:.8rem;font-weight:600;min-height:1.2em}
+.rv-form-msg.ok{color:#22c55e}
+.rv-form-msg.err{color:#ef4444}
+.rv-form-note{font-size:.68rem;color:var(--faint);margin-top:.6rem}
 
 /* CTA block */
 .rv-cta{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center}
@@ -182,11 +210,18 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
 .ft-links a:hover{color:var(--P)}
 .ft-copy{font-size:11px;color:var(--tm);line-height:1.6}
 @media(max-width:480px){footer{padding:18px 14px}.ft-links{gap:10px}}
+
+/* ═══ SCROLL REVEAL (matches home.html dynamic-on-scroll pattern) ═══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
 </style>
 </head>
 <body>
 <!-- NAV -->
-<nav>
+<nav id="gnav">
   <div class="nav-in">
     <a class="nav-logo" href="home.html">
       <div class="nav-icon"><img src="logo.jpg" alt="GCT Logo" onerror="this.parentNode.innerHTML='⚙️';this.parentNode.style.background='var(--P)';this.parentNode.style.fontSize='18px'"></div>
@@ -200,9 +235,9 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
       <a href="contact.html">📞 Contact</a>
       <a href="https://wa.me/918454995315" class="nav-wa" target="_blank">📱 WhatsApp</a>
     </div>
-    <button class="burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+    <button class="burger" id="burgerBtn" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
-  <div class="mob-nav" id="mob-nav">
+  <div class="mob-nav" id="mob-nav" aria-hidden="true">
     <a href="home.html">🏠 Home</a>
     <a href="index.html">⚙️ Calculator</a>
     <a href="products.html">🔩 Products</a>
@@ -225,21 +260,21 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
   <!-- Stats Strip -->
   <div class="stats-strip">
     <div class="stats-inner">
-      <div class="stat-big">
+      <div class="stat-big reveal">
         <div class="stat-big-num">4.9</div>
         <div class="stat-big-stars">★★★★★</div>
         <div class="stat-big-lbl">Overall Rating</div>
       </div>
       <div class="stats-div"></div>
-      <div class="bar-group">
-        <div class="bar-row"><span>5★</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span>90%</span></div>
-        <div class="bar-row"><span>4★</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span>8%</span></div>
-        <div class="bar-row"><span>3★</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span>2%</span></div>
-        <div class="bar-row"><span>2★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span>0%</span></div>
-        <div class="bar-row"><span>1★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span>0%</span></div>
+      <div class="bar-group reveal">
+        <div class="bar-row"><span>5★</span><div class="bar-track"><div class="bar-fill" data-w="90"></div></div><span>90%</span></div>
+        <div class="bar-row"><span>4★</span><div class="bar-track"><div class="bar-fill" data-w="8"></div></div><span>8%</span></div>
+        <div class="bar-row"><span>3★</span><div class="bar-track"><div class="bar-fill" data-w="2"></div></div><span>2%</span></div>
+        <div class="bar-row"><span>2★</span><div class="bar-track"><div class="bar-fill" data-w="0"></div></div><span>0%</span></div>
+        <div class="bar-row"><span>1★</span><div class="bar-track"><div class="bar-fill" data-w="0"></div></div><span>0%</span></div>
       </div>
       <div class="stats-div"></div>
-      <div class="stat-nums">
+      <div class="stat-nums reveal">
         <div class="sn-item"><div class="sn-val">1000+</div><div class="sn-lbl">Happy Clients</div></div>
         <div class="sn-item"><div class="sn-val">25+</div><div class="sn-lbl">Years Trust</div></div>
         <div class="sn-item"><div class="sn-val">PAN India</div><div class="sn-lbl">Delivery</div></div>
@@ -250,89 +285,49 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
   <!-- Reviews Grid -->
   <section style="background:var(--bg)">
     <div class="reviews-section">
-      <div class="reviews-grid">
 
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">Gurudatta has been our preferred supplier for over a decade. Spring quality is consistent, delivery is always on time, and the team is helpful with custom specs.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#f97316;">RJ</div><div><div class="rv-name">Ramesh Joshi</div><div class="rv-role">Procurement Head, Auto Components Ltd., Pune</div></div></div>
-        </article>
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- rendered dynamically by JS from the reviews data array -->
+      </div>
 
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">We switched to Gurudatta Trading three years ago and never looked back. Their springs meet IS standards and pricing is very competitive for the quality offered.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#3b82f6;">SN</div><div><div class="rv-name">Sanjay Naik</div><div class="rv-role">Production Manager, Precision Engineers, Nashik</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">The integrated spring calculator on their website is a game changer! I could get spring rate estimates before even placing an enquiry. Very modern approach.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#22c55e;">PD</div><div><div class="rv-name">Priya Deshpande</div><div class="rv-role">Design Engineer, Hydraulics Co., Mumbai</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★☆</div><div class="rv-q">"</div>
-          <p class="rv-txt">Excellent range of connecting springs. The team understood our requirements and provided samples within 48 hours. Highly recommend for industrial use.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#8b5cf6;">AM</div><div><div class="rv-name">Arun Mehta</div><div class="rv-role">Purchase Dept., Textile Machinery Works, Surat</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">Best mild steel spring supplier in Mumbai. We source red MS springs from Gurudatta for our export orders for years. Quality and packaging is always top-notch.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#f97316;">VK</div><div><div class="rv-name">Vikram Kulkarni</div><div class="rv-role">Director, Springex Exports Pvt. Ltd., Mumbai</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">Timely dispatch, great packaging, top-notch quality. Gurudatta Trading Co. is our go-to partner for all spring requirements across our Maharashtra operations.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#ef4444;">NK</div><div><div class="rv-name">Nilesh Kale</div><div class="rv-role">Operations Head, Mfg Solutions India, Aurangabad</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">We needed custom conical springs for a special machine. Gurudatta's team guided us through the entire specification process. Delivered exactly as needed within a week.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#14b8a6;">DM</div><div><div class="rv-name">Dinesh More</div><div class="rv-role">Mechanical Engineer, Packaging Industries, Thane</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">I compared 5 suppliers before choosing Gurudatta. Best price-to-quality ratio for MS springs. Their stock is always ready and orders ship same day.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#3b82f6;">SP</div><div><div class="rv-name">Sunil Patil</div><div class="rv-role">Stores Manager, Farm Equipment Co., Kolhapur</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">The stainless steel springs we ordered for our food-grade conveyor are perfect exactly to the tolerance specified. Very impressive for a small-batch order.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#8b5cf6;">RS</div><div><div class="rv-name">Rajesh Shah</div><div class="rv-role">Production Head, Food Processing Ltd., Pune</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">We've been buying suspension coil springs from Gurudatta for our auto garage for 8 years. Never a single complaint from our customers. Solid product, solid company.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#f59e0b;">MK</div><div><div class="rv-name">Mohammad Khan</div><div class="rv-role">Owner, Supreme Auto Workshop, Mumbai</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★★</div><div class="rv-q">"</div>
-          <p class="rv-txt">Very professional team. They understood our drawing immediately and manufactured 500 pieces of custom torsion springs. Delivered on schedule with proper packing.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#22c55e;">AT</div><div><div class="rv-name">Anita Tiwari</div><div class="rv-role">Purchase Manager, Industrial Tools Co., Nagpur</div></div></div>
-        </article>
-
-        <article class="rv-card">
-          <div class="rv-stars">★★★★☆</div><div class="rv-q">"</div>
-          <p class="rv-txt">Good range and reasonable prices. The spring calculator helped me finalize the spec before ordering saved a lot of back and forth communication. Recommended.</p>
-          <div class="rv-author"><div class="rv-av" style="background:#3b82f6;">HB</div><div><div class="rv-name">Harish Bhatt</div><div class="rv-role">R&amp;D Engineer, Precision Instruments, Ahmedabad</div></div></div>
-        </article>
-
-      </div><!-- /reviews-grid -->
+      <!-- Write a Review -->
+      <div class="rv-form-wrap reveal">
+        <h2 class="rv-form-title">Share Your Experience</h2>
+        <p class="rv-form-sub">Your review helps other businesses trust us. It appears in the list above instantly.</p>
+        <form id="reviewForm" class="rv-form">
+          <div class="rv-form-row">
+            <div class="rv-form-group">
+              <label for="rf-name">Your Name*</label>
+              <input type="text" id="rf-name" required placeholder="e.g. Rahul Sharma">
+            </div>
+            <div class="rv-form-group">
+              <label for="rf-role">Company / Role*</label>
+              <input type="text" id="rf-role" required placeholder="e.g. Purchase Manager, ABC Ltd.">
+            </div>
+          </div>
+          <div class="rv-form-group">
+            <label>Your Rating*</label>
+            <div class="rv-star-input" id="rf-stars" role="radiogroup" aria-label="Rating">
+              <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+            </div>
+          </div>
+          <div class="rv-form-group">
+            <label for="rf-text">Your Review*</label>
+            <textarea id="rf-text" required rows="4" placeholder="Tell us about your experience with Gurudatta Trading Co..."></textarea>
+          </div>
+          <button type="submit" class="btn-pri" style="border:none;">✍️ Submit Review</button>
+          <div id="rf-msg" class="rv-form-msg"></div>
+          <div class="rv-form-note">Reviews submitted here are shown only in this browser, as a live preview.</div>
+        </form>
+      </div>
 
       <!-- CTA -->
-      <div class="rv-cta">
+      <div class="rv-cta reveal">
         <h2>Ready to experience the difference?</h2>
         <p>Join 1000+ businesses across India who trust Gurudatta Trading Co.</p>
         <div class="btn-row">
           <a href="contact.html" class="btn-pri">📞 Get a Quote</a>
-          <a href="calculator.html" class="btn-out">⚙️ Try Calculator</a>
+          <a href="index.html" class="btn-out">⚙️ Try Calculator</a>
         </div>
       </div>
 
@@ -350,8 +345,187 @@ footer{background:var(--navy2);border-top:1px solid var(--bdr);padding:24px 20px
 </footer>
 
 <script>
-function toggleNav(){document.getElementById('mob-nav').classList.toggle('open');}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('mob-nav').classList.remove('open')});
+/* ================================================================
+   DYNAMIC NAV — scroll state, animated mobile menu, outside-click
+   close (same pattern as home.html)
+   ================================================================ */
+const gnav = document.getElementById('gnav');
+const burgerBtn = document.getElementById('burgerBtn');
+const mobNav = document.getElementById('mob-nav');
+
+function setNavScrolled(){
+  if (!gnav) return;
+  gnav.classList.toggle('is-scrolled', window.scrollY > 12);
+}
+setNavScrolled();
+window.addEventListener('scroll', setNavScrolled, { passive: true });
+
+function closeMobNav(){
+  if (!mobNav || !burgerBtn) return;
+  mobNav.classList.remove('open');
+  mobNav.setAttribute('aria-hidden', 'true');
+  burgerBtn.classList.remove('open');
+  burgerBtn.setAttribute('aria-expanded', 'false');
+  burgerBtn.textContent = '☰';
+}
+
+function toggleNav(){
+  if (!mobNav || !burgerBtn) return;
+  const nowOpen = mobNav.classList.toggle('open');
+  mobNav.setAttribute('aria-hidden', String(!nowOpen));
+  burgerBtn.classList.toggle('open', nowOpen);
+  burgerBtn.setAttribute('aria-expanded', String(nowOpen));
+  burgerBtn.textContent = nowOpen ? '✕' : '☰';
+}
+
+if (mobNav) {
+  mobNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobNav));
+}
+document.addEventListener('click', e => {
+  if (!mobNav || !mobNav.classList.contains('open')) return;
+  if (mobNav.contains(e.target) || e.target === burgerBtn) return;
+  closeMobNav();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobNav(); });
+window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMobNav(); });
+
+/* ================================================================
+   REVIEWS DATA — rendered dynamically instead of hardcoded HTML
+   ================================================================ */
+const defaultReviews = [
+  {rating:5, name:"Ramesh Joshi", role:"Procurement Head, Auto Components Ltd., Pune", initials:"RJ", color:"#f97316",
+   text:"Gurudatta has been our preferred supplier for over a decade. Spring quality is consistent, delivery is always on time, and the team is helpful with custom specs."},
+  {rating:5, name:"Sanjay Naik", role:"Production Manager, Precision Engineers, Nashik", initials:"SN", color:"#3b82f6",
+   text:"We switched to Gurudatta Trading three years ago and never looked back. Their springs meet IS standards and pricing is very competitive for the quality offered."},
+  {rating:5, name:"Priya Deshpande", role:"Design Engineer, Hydraulics Co., Mumbai", initials:"PD", color:"#22c55e",
+   text:"The integrated spring calculator on their website is a game changer! I could get spring rate estimates before even placing an enquiry. Very modern approach."},
+  {rating:4, name:"Arun Mehta", role:"Purchase Dept., Textile Machinery Works, Surat", initials:"AM", color:"#8b5cf6",
+   text:"Excellent range of connecting springs. The team understood our requirements and provided samples within 48 hours. Highly recommend for industrial use."},
+  {rating:5, name:"Vikram Kulkarni", role:"Director, Springex Exports Pvt. Ltd., Mumbai", initials:"VK", color:"#f97316",
+   text:"Best mild steel spring supplier in Mumbai. We source red MS springs from Gurudatta for our export orders for years. Quality and packaging is always top-notch."},
+  {rating:5, name:"Nilesh Kale", role:"Operations Head, Mfg Solutions India, Aurangabad", initials:"NK", color:"#ef4444",
+   text:"Timely dispatch, great packaging, top-notch quality. Gurudatta Trading Co. is our go-to partner for all spring requirements across our Maharashtra operations."},
+  {rating:5, name:"Dinesh More", role:"Mechanical Engineer, Packaging Industries, Thane", initials:"DM", color:"#14b8a6",
+   text:"We needed custom conical springs for a special machine. Gurudatta's team guided us through the entire specification process. Delivered exactly as needed within a week."},
+  {rating:5, name:"Sunil Patil", role:"Stores Manager, Farm Equipment Co., Kolhapur", initials:"SP", color:"#3b82f6",
+   text:"I compared 5 suppliers before choosing Gurudatta. Best price-to-quality ratio for MS springs. Their stock is always ready and orders ship same day."},
+  {rating:5, name:"Rajesh Shah", role:"Production Head, Food Processing Ltd., Pune", initials:"RS", color:"#8b5cf6",
+   text:"The stainless steel springs we ordered for our food-grade conveyor are perfect exactly to the tolerance specified. Very impressive for a small-batch order."},
+  {rating:5, name:"Mohammad Khan", role:"Owner, Supreme Auto Workshop, Mumbai", initials:"MK", color:"#f59e0b",
+   text:"We've been buying suspension coil springs from Gurudatta for our auto garage for 8 years. Never a single complaint from our customers. Solid product, solid company."},
+  {rating:5, name:"Anita Tiwari", role:"Purchase Manager, Industrial Tools Co., Nagpur", initials:"AT", color:"#22c55e",
+   text:"Very professional team. They understood our drawing immediately and manufactured 500 pieces of custom torsion springs. Delivered on schedule with proper packing."},
+  {rating:4, name:"Harish Bhatt", role:"R&D Engineer, Precision Instruments, Ahmedabad", initials:"HB", color:"#3b82f6",
+   text:"Good range and reasonable prices. The spring calculator helped me finalize the spec before ordering saved a lot of back and forth communication. Recommended."}
+];
+
+const STORAGE_KEY = "gurudatta_user_reviews";
+let userReviews = [];
+try { userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { userReviews = []; }
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+function starsMarkup(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
+
+function renderReviews(){
+  const grid = document.getElementById('reviewsGrid');
+  const all = [...userReviews, ...defaultReviews];
+  grid.innerHTML = all.map((r, i) => `
+    <article class="rv-card reveal" style="transition-delay:${(i % 4) * 0.08}s">
+      ${r.userSubmitted ? '<span class="rv-badge-new">🆕 New</span>' : ''}
+      <div class="rv-stars">${starsMarkup(r.rating)}</div><div class="rv-q">"</div>
+      <p class="rv-txt">${escapeHtml(r.text)}</p>
+      <div class="rv-author">
+        <div class="rv-av" style="background:${r.color}">${escapeHtml(r.initials)}</div>
+        <div><div class="rv-name">${escapeHtml(r.name)}</div><div class="rv-role">${escapeHtml(r.role)}</div></div>
+      </div>
+    </article>
+  `).join('');
+  attachReveal(grid.querySelectorAll('.reveal'));
+}
+
+function saveUserReviews(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(userReviews)); } catch(e) {}
+}
+
+/* ── Write-a-review form ── */
+const starWrap = document.getElementById('rf-stars');
+let selectedRating = 5;
+function paintStars(v){
+  starWrap.querySelectorAll('span').forEach(s => s.classList.toggle('on', +s.dataset.v <= v));
+}
+paintStars(selectedRating);
+starWrap.addEventListener('click', e => {
+  if (e.target.dataset.v) { selectedRating = +e.target.dataset.v; paintStars(selectedRating); }
+});
+
+document.getElementById('reviewForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('rf-name').value.trim();
+  const role = document.getElementById('rf-role').value.trim();
+  const text = document.getElementById('rf-text').value.trim();
+  const msg = document.getElementById('rf-msg');
+
+  if (!name || !role || !text) {
+    msg.textContent = 'Please fill all required fields.';
+    msg.className = 'rv-form-msg err';
+    return;
+  }
+
+  const palette = ['#f97316','#3b82f6','#22c55e','#8b5cf6','#ef4444','#14b8a6','#f59e0b'];
+  const initials = name.trim().split(/\s+/).map(w => w[0]).join('').slice(0,2).toUpperCase();
+
+  userReviews.unshift({
+    rating: selectedRating,
+    name, role, text, initials,
+    color: palette[Math.floor(Math.random() * palette.length)],
+    userSubmitted: true
+  });
+  saveUserReviews();
+  renderReviews();
+
+  this.reset();
+  selectedRating = 5;
+  paintStars(5);
+  msg.textContent = 'Thank you! Your review has been posted below.';
+  msg.className = 'rv-form-msg ok';
+  document.getElementById('reviewsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => { msg.textContent = ''; msg.className = 'rv-form-msg'; }, 4500);
+});
+
+/* ================================================================
+   SCROLL REVEAL — fade-up animation as elements enter viewport
+   (same IntersectionObserver pattern as home.html)
+   ================================================================ */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let revealObserver = null;
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}
+function attachReveal(nodeList){
+  if (!revealObserver) { nodeList.forEach(el => el.classList.add('is-visible')); return; }
+  nodeList.forEach(el => revealObserver.observe(el));
+}
+
+/* Animate the rating bars filling in once visible */
+document.querySelectorAll('.bar-fill').forEach(bar => {
+  bar.style.width = '0%';
+  setTimeout(() => { bar.style.width = (bar.dataset.w || 0) + '%'; }, 250);
+});
+
+/* Initial render + observe the static reveal-tagged sections */
+renderReviews();
+attachReveal(document.querySelectorAll('.reveal:not(.rv-card)'));
 </script>
 </body>
 </html>
