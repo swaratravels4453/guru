@@ -264,6 +264,9 @@ input[type=number] { -moz-appearance: textfield; }
 
 /* ===== 7. CERTIFICATIONS ===== */
 .cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (min-width:769px) and (max-width:1024px) {
+  .cert-grid { grid-template-columns: repeat(2,1fr); }
+}
 .cert-card { position: relative; background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; padding: 32px 24px 28px; text-align: center; cursor: pointer; transition: all 0.28s ease; overflow: hidden; }
 .cert-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
 .cert-card-featured { border-color: rgba(240,165,0,0.35); background: linear-gradient(160deg, rgba(21,32,64,0.95), rgba(30,20,5,0.6)); }
@@ -272,12 +275,16 @@ input[type=number] { -moz-appearance: textfield; }
 .cert-glow-blue  { background: radial-gradient(circle, rgba(59,139,255,0.18) 0%, transparent 70%); }
 .cert-glow-gold  { background: radial-gradient(circle, rgba(240,165,0,0.22) 0%, transparent 70%); }
 .cert-glow-green { background: radial-gradient(circle, rgba(39,174,96,0.18) 0%, transparent 70%); }
+.cert-glow-red   { background: radial-gradient(circle, rgba(230,57,70,0.20) 0%, transparent 70%); }
+.cert-glow-teal  { background: radial-gradient(circle, rgba(13,92,122,0.28) 0%, transparent 70%); }
 .cert-featured-tag { position: absolute; top: 16px; right: 16px; background: var(--accent); color: var(--navy); font-family: var(--ff-a); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
 .cert-icon-wrap { margin-bottom: 18px; }
 .cert-icon-ring { width: 72px; height: 72px; border-radius: 50%; border: 2.5px solid; display: inline-flex; align-items: center; justify-content: center; animation: certPulse 3s ease-in-out infinite; }
 .cert-ring-blue  { border-color: #3b8bff; box-shadow: 0 0 18px rgba(59,139,255,0.3); }
 .cert-ring-gold  { border-color: var(--accent); animation: certPulseGold 3s ease-in-out infinite; }
 .cert-ring-green { border-color: #27ae60; box-shadow: 0 0 18px rgba(39,174,96,0.3); }
+.cert-ring-red   { border-color: #e63946; box-shadow: 0 0 18px rgba(230,57,70,0.3); }
+.cert-ring-teal  { border-color: #0d5c7a; box-shadow: 0 0 18px rgba(13,92,122,0.4); }
 @keyframes certPulse { 0%,100% { box-shadow: 0 0 18px rgba(59,139,255,0.3); } 50% { box-shadow: 0 0 30px rgba(59,139,255,0.6); } }
 @keyframes certPulseGold { 0%,100% { box-shadow: 0 0 22px rgba(240,165,0,0.35); } 50% { box-shadow: 0 0 40px rgba(240,165,0,0.65); } }
 .cert-icon-text { font-family: var(--ff-d); font-size: 1.1rem; font-weight: 900; letter-spacing: 1px; color: var(--white); text-align: center; line-height: 1.1; }
@@ -285,6 +292,8 @@ input[type=number] { -moz-appearance: textfield; }
 .cert-badge-blue  { background: rgba(59,139,255,0.15); color: #3b8bff; border: 1px solid rgba(59,139,255,0.3); }
 .cert-badge-gold  { background: rgba(240,165,0,0.15); color: var(--accent); border: 1px solid rgba(240,165,0,0.35); }
 .cert-badge-green { background: rgba(39,174,96,0.15); color: #27ae60; border: 1px solid rgba(39,174,96,0.3); }
+.cert-badge-red   { background: rgba(230,57,70,0.15); color: #e63946; border: 1px solid rgba(230,57,70,0.35); }
+.cert-badge-teal  { background: rgba(13,92,122,0.18); color: #3fb8e8; border: 1px solid rgba(13,92,122,0.4); }
 .cert-name  { font-family: var(--ff-d); font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
 .cert-full  { font-family: var(--ff-a); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 14px; }
 .cert-desc  { font-size: 13px; color: var(--grey-light); line-height: 1.65; margin-bottom: 18px; }
@@ -602,7 +611,7 @@ footer{background:var(--g-navy2);border-top:1px solid var(--g-bdr);padding:24px 
     </div>
     <div class="cert-grid">
       <!-- FIX 14: cert cards use CSS class hover instead of inline onclick for security -->
-      <div class="cert-card" role="button" tabindex="0" aria-label="View IEC Certificate" onclick="window.open('https://www.gurudattatradingco.in/certificates.htm#99009','_blank','noopener,noreferrer')">
+      <div class="cert-card" role="button" tabindex="0" aria-label="View IEC Certificate" onclick="window.open('certificates/iec-certificate.pdf','_blank','noopener,noreferrer')">
         <div class="cert-glow cert-glow-blue"></div>
         <div class="cert-icon-wrap"><div class="cert-icon-ring cert-ring-blue"><span class="cert-icon-text">IEC</span></div></div>
         <div class="cert-badge cert-badge-blue">Certified</div>
@@ -611,7 +620,7 @@ footer{background:var(--g-navy2);border-top:1px solid var(--g-bdr);padding:24px 
         <div class="cert-desc">Authorised for international trade and export operations under DGFT, Government of India.</div>
         <div class="cert-view">View Certificate →</div>
       </div>
-      <div class="cert-card cert-card-featured" role="button" tabindex="0" aria-label="View ISO Certificate" onclick="window.open('https://www.gurudattatradingco.in/certificates.htm#99010','_blank','noopener,noreferrer')">
+      <div class="cert-card cert-card-featured" role="button" tabindex="0" aria-label="View ISO Certificate" onclick="window.open('certificates/iso-9001-2015-certificate.pdf','_blank','noopener,noreferrer')">
         <div class="cert-glow cert-glow-gold"></div>
         <div class="cert-featured-tag">⭐ Featured</div>
         <div class="cert-icon-wrap"><div class="cert-icon-ring cert-ring-gold"><span class="cert-icon-text">ISO</span></div></div>
@@ -621,7 +630,7 @@ footer{background:var(--g-navy2);border-top:1px solid var(--g-bdr);padding:24px 
         <div class="cert-desc">International Quality Management Standard — ensuring consistent product quality and customer satisfaction.</div>
         <div class="cert-view">View Certificate →</div>
       </div>
-      <div class="cert-card" role="button" tabindex="0" aria-label="View Udyam Certificate" onclick="window.open('https://www.gurudattatradingco.in/certificates.htm#99011','_blank','noopener,noreferrer')">
+      <div class="cert-card" role="button" tabindex="0" aria-label="View Udyam Certificate" onclick="window.open('certificates/udyam-registration-certificate.pdf','_blank','noopener,noreferrer')">
         <div class="cert-glow cert-glow-green"></div>
         <div class="cert-icon-wrap"><div class="cert-icon-ring cert-ring-green"><span class="cert-icon-text" style="font-size:.9rem;">UDYAM</span></div></div>
         <div class="cert-badge cert-badge-green">Registered</div>
@@ -630,19 +639,45 @@ footer{background:var(--g-navy2);border-top:1px solid var(--g-bdr);padding:24px 
         <div class="cert-desc">Registered under Ministry of MSME, Government of India. Recognised micro, small &amp; medium enterprise.</div>
         <div class="cert-view">View Certificate →</div>
       </div>
+      <div class="cert-card" role="button" tabindex="0" aria-label="View IndiaMART TrustSeal Certificate" onclick="window.open('certificates/indiamart-trustseal-certificate.pdf','_blank','noopener,noreferrer')">
+        <div class="cert-glow cert-glow-red"></div>
+        <div class="cert-icon-wrap"><div class="cert-icon-ring cert-ring-red"><span class="cert-icon-text" style="font-size:.75rem;">TRUST<br>SEAL</span></div></div>
+        <div class="cert-badge cert-badge-red">Verified</div>
+        <div class="cert-name">TrustSeal Certificate</div>
+        <div class="cert-full">IndiaMART Verified Member</div>
+        <div class="cert-desc">Independently verified company details — trusted member of India's largest B2B marketplace, IndiaMART.</div>
+        <div class="cert-view">View Certificate →</div>
+      </div>
+      <div class="cert-card" role="button" tabindex="0" aria-label="View GST Registration Certificate" onclick="window.open('certificates/gst-registration-certificate.pdf','_blank','noopener,noreferrer')">
+        <div class="cert-glow cert-glow-teal"></div>
+        <div class="cert-icon-wrap"><div class="cert-icon-ring cert-ring-teal"><span class="cert-icon-text" style="font-size:.95rem;">GST</span></div></div>
+        <div class="cert-badge cert-badge-teal">Registered</div>
+        <div class="cert-name">GST Certificate</div>
+        <div class="cert-full">GSTIN 27CBBPG9951J1ZB</div>
+        <div class="cert-desc">Registered under the Goods and Services Tax Act, Government of India — Form GST REG-06.</div>
+        <div class="cert-view">View Certificate →</div>
+      </div>
     </div>
     <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px;">
-      <a href="https://www.gurudattatradingco.in/certificates.htm#99009" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
-        <img src="https://dyimg77.exportersindia.com/catalog-gallery/gallery_99009_20250705171810-small.jpg" alt="IEC Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
+      <a href="certificates/iec-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+        <img src="certificates/iec-thumb.jpg" alt="IEC Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
         <span class="cert-thumb-lbl">IEC Certificate</span>
       </a>
-      <a href="https://www.gurudattatradingco.in/certificates.htm#99010" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
-        <img src="https://dyimg77.exportersindia.com/catalog-gallery/gallery_99010_20250705171829-small.jpg" alt="ISO Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
+      <a href="certificates/iso-9001-2015-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+        <img src="certificates/iso-9001-2015-thumb.jpg" alt="ISO Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
         <span class="cert-thumb-lbl">ISO Certificate</span>
       </a>
-      <a href="https://www.gurudattatradingco.in/certificates.htm#99011" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
-        <img src="https://dyimg77.exportersindia.com/catalog-gallery/gallery_99011_20250705171836-small.jpg" alt="Udyam Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
+      <a href="certificates/udyam-registration-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+        <img src="certificates/udyam-registration-thumb.jpg" alt="Udyam Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
         <span class="cert-thumb-lbl">Udyam Certificate</span>
+      </a>
+      <a href="certificates/indiamart-trustseal-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+        <img src="certificates/indiamart-trustseal-thumb.jpg" alt="TrustSeal Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
+        <span class="cert-thumb-lbl">TrustSeal Certificate</span>
+      </a>
+      <a href="certificates/gst-registration-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+        <img src="certificates/gst-registration-thumb.jpg" alt="GST Certificate — Gurudatta Trading Co." class="cert-thumb-img" onerror="this.style.display='none'"/>
+        <span class="cert-thumb-lbl">GST Certificate</span>
       </a>
     </div>
   </div>
